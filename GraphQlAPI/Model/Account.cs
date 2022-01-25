@@ -12,5 +12,7 @@ namespace GraphQlAPI.Model
         public string Password { get; set; }
         [Required]
         public string Name { get; set; }
+        [Required]
+        public double Amount { get; set; }
     }
 }

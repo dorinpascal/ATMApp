@@ -16,15 +16,12 @@ namespace GraphQlAPI.Data
             context.Database.EnsureCreated();
         }
 
-        public async Task<Account> ValidateAccount(string AccountNumber, string Password)
+        public async Task<Account> ValidateAccount(string AccountNumber)
         {
             return await context.Accounts.Where(a =>
-                (
+                
                     a.AccountNumber == AccountNumber
-                ) &&
-                (
-                    a.Password == Password
-                )).FirstOrDefaultAsync();
+                ).FirstOrDefaultAsync();
         }
     }
 }

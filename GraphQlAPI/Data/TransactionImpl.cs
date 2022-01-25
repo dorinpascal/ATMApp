@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,31 +12,32 @@ namespace GraphQlAPI.Data
     public class TransactionImpl : ITransaction
     {
         private readonly ATMContext context;
-        // private Transaction transaction;
-        
-        public async Task<double> Deposit(int id, double Amount)
+        public TransactionImpl(ATMContext context)
         {
-            var ruble = await context.Transactions.Where(t
-                => t.id == id).FirstOrDefaultAsync();
-            ruble.Amount == Amount;
-            
+            this.context = context;
+        }
+        public async Task AddTransaction(Transaction transaction)
+        {
+            await context.Transactions.AddAsync(transaction);
             await context.SaveChangesAsync();
-            return 0;
         }
 
-        public async Task<double> Withdraw(int id, double Amount)
+        public async Task<Transaction> GetTransaction(int id)
         {
-            throw new System.NotImplementedException();
+            return await context.Transactions.Where(t => t.id == id).FirstAsync();
         }
 
-        public async Task<IList<Transaction>> getLast5Transactions(int accountId)
+        public async Task<IList<Transaction>> GetLast5Transactions(int accountId)
         {
-            var acc = await context.Accounts.Where(a
-                => a.id == accountId).FirstOrDefaultAsync();
+            IList<Transaction> temp = new List<Transaction>();
+            IList<Transaction> transactions = await context.Transactions.Where(t => t.Account.id == accountId).ToListAsync();
+            for (int i = transactions.Count; i > transactions.Count-5; i--)
+            {
+                temp.Add(transactions[i]);
+            }
 
-            context.Transactions.AddAsync(acc);
+            return temp;
 
-            // throw new System.NotImplementedException();
         }
     }
 }

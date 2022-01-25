@@ -7,7 +7,7 @@ namespace GraphQlAPI.GraphQL.Record
     (
         int id,
         string Action,
-        DateTime Date,
+        //DateTime Date,
         double Amount,
         Account Account
     );

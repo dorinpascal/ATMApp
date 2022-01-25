@@ -5,6 +5,6 @@ namespace GraphQlAPI.Data
 {
     public interface IAccount
     {
-        public Task<Account> ValidateAccount(string AccountNumber, string Password);
+        public Task<Account> ValidateAccount(string AccountNumber);
     }
 }

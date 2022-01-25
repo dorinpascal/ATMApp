@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using GraphQL.Server.Ui.Voyager;
 using GraphQlAPI.GraphQL;
 using GraphQlAPI.GraphQL.Mutation;
+using GraphQlAPI.GraphQL.Query;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -58,11 +59,11 @@ namespace GraphQlAPI
             {
                 endpoints.MapGraphQL();
             });
-            app.UseGraphQLVoyager(new GraphQLVoyagerOptions()
+            /*app.UseGraphQLVoyager(new GraphQLVoyagerOptions()
             {
                 GraphQLEndPoint = "/graphql",
                 Path = "/graphql-voyager"
-            });
+            });*/
         }
     }
 }

@@ -20,4 +20,8 @@
       <ProjectReference Include="..\ATMApp\ATMApp.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Logic" />
+    </ItemGroup>
+
 </Project>
