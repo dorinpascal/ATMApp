@@ -10,6 +10,7 @@ namespace GraphQlAPI.Data
     {
         private readonly ATMContext context;
 
+        
         public Task<double> Deposit(double Amount)
         {
             throw new System.NotImplementedException();

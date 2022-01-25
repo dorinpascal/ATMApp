@@ -3,14 +3,16 @@ using System;
 using GraphQlAPI.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GraphQlAPI.Migrations
 {
     [DbContext(typeof(ATMContext))]
-    partial class ATMContextModelSnapshot : ModelSnapshot
+    [Migration("20220125132517_DatabaseUpdate")]
+    partial class DatabaseUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,9 +47,6 @@ namespace GraphQlAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("Accountid")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Action")
                         .HasColumnType("TEXT");
 
@@ -59,18 +58,7 @@ namespace GraphQlAPI.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("Accountid");
-
                     b.ToTable("Transactions");
-                });
-
-            modelBuilder.Entity("GraphQlAPI.Model.Transaction", b =>
-                {
-                    b.HasOne("GraphQlAPI.Model.Account", "Account")
-                        .WithMany()
-                        .HasForeignKey("Accountid");
-
-                    b.Navigation("Account");
                 });
 #pragma warning restore 612, 618
         }

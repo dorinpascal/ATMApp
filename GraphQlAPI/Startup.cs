@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GraphQL.Server.Ui.Voyager;
 using GraphQlAPI.GraphQL;
+using GraphQlAPI.GraphQL.Mutation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,7 +35,7 @@ namespace GraphQlAPI
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "GraphQlAPI", Version = "v1"});
             });
             services.AddGraphQLServer()
-                .AddQueryType<Query>();
+                .AddQueryType<Query>().AddMutationType<Mutation>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +57,11 @@ namespace GraphQlAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGraphQL();
+            });
+            app.UseGraphQLVoyager(new GraphQLVoyagerOptions()
+            {
+                GraphQLEndPoint = "/graphql",
+                Path = "/graphql-voyager"
             });
         }
     }
