@@ -26,6 +26,11 @@ namespace GraphQlAPI.Data
         {
             return await context.Transactions.Where(t => t.id == id).FirstAsync();
         }
+        
+        public async Task<List<Transaction>> GetAllTransaction()
+        {
+            return await context.Transactions.ToListAsync();
+        }
 
         public async Task<IList<Transaction>> GetLast5Transactions(int accountId)
         {
@@ -37,7 +42,6 @@ namespace GraphQlAPI.Data
             }
 
             return temp;
-
         }
     }
 }

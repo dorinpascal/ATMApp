@@ -8,10 +8,10 @@ namespace GraphQlAPI.GraphQL.Query
 {
     public class Query
     {
-        public IQueryable<Account> GetAccounts([ScopedService] ATMContext context)
+        public IQueryable<Transaction> GetAccounts([ScopedService] ATMContext context)
         {
             Console.WriteLine("aleo");
-            return context.Accounts;
+            return context.Transactions;
         }
     }
 }
