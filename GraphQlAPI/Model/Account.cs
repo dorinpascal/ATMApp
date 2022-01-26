@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace GraphQlAPI.Model
 {
@@ -14,5 +15,6 @@ namespace GraphQlAPI.Model
         public string Name { get; set; }
         [Required]
         public double Amount { get; set; }
+        public IList<Transaction>Transactions { get; set; }
     }
 }

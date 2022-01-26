@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GraphQlAPI.Data.Interface;
 using GraphQlAPI.Model;
 using GraphQlAPI.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -34,14 +35,15 @@ namespace GraphQlAPI.Data
 
         public async Task<IList<Transaction>> GetLast5Transactions(int accountId)
         {
-            IList<Transaction> temp = new List<Transaction>();
+            /*IList<Transaction> temp = new List<Transaction>();
             IList<Transaction> transactions = await context.Transactions.Where(t => t.Account.id == accountId).ToListAsync();
             for (int i = transactions.Count; i > transactions.Count-5; i--)
             {
                 temp.Add(transactions[i]);
             }
 
-            return temp;
+            return temp;*/
+            return null;
         }
     }
 }

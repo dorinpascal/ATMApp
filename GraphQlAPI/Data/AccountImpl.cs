@@ -1,12 +1,13 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using GraphQlAPI.Data.Interface;
 using GraphQlAPI.Model;
 using GraphQlAPI.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace GraphQlAPI.Data
 {
-    public class AccountImpl : IAccount
+    /*public class AccountImpl : IAccount
     {
         private readonly ATMContext context;
 
@@ -23,5 +24,5 @@ namespace GraphQlAPI.Data
                     a.AccountNumber == AccountNumber
                 ).FirstOrDefaultAsync();
         }
-    }
+    }*/
 }

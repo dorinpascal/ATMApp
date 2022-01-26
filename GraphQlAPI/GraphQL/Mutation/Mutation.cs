@@ -2,28 +2,37 @@
 using System;
 using System.Threading.Tasks;
 using GraphQlAPI.Data;
+using GraphQlAPI.Data.Interface;
 using GraphQlAPI.GraphQL.Record;
 using GraphQlAPI.Model;
 using GraphQlAPI.Persistence;
 using HotChocolate;
+using HotChocolate.Data;
 
 namespace GraphQlAPI.GraphQL.Mutation
 {
     public class Mutation
     {
-        public async Task<Transaction> AddTransaction([ScopedService] TransactionImpl context, TransactionRecord transaction)
+        [UseDbContext(typeof(ATMContext))]
+        [GraphQLDescription("Adds a transaction.")]
+        public async Task<Transaction> AddTransaction([ScopedService] ATMContext context, Transaction transaction)
         {
             Console.WriteLine("aleo");
-            var temp = new Transaction
+            Console.WriteLine(transaction.Action+ "lalala");
+            Console.WriteLine("aleo");
+            Transaction temp = new Transaction
             {
                 id = transaction.id,
                 Action = transaction.Action,
                 //Date = transaction.Date,
                 Amount = transaction.Amount,
-                Account = transaction.Account
+                AccountId = transaction.AccountId
 
             };
-            await context.AddTransaction(temp);
+            Console.WriteLine("aleox2");
+            await context.Transactions.AddAsync(transaction);
+            await context.SaveChangesAsync();
+            Console.WriteLine("aleox3");
             return temp;
         }
 

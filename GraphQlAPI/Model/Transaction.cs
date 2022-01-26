@@ -12,6 +12,6 @@ namespace GraphQlAPI.Model
        // [Required] public DateTime Date { get; set; }
         public string Action { get; set; }
         public double Amount { get; set; }
-        public Account Account { get; set; }
+        public int AccountId { get; set; }
     }
 }

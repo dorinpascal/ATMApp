@@ -2,7 +2,7 @@
 
 namespace ATMApp.Model
 {
-    public class Account
+    /*public class Account
     {
         [Key]
         public int id { get; set; }
@@ -12,5 +12,5 @@ namespace ATMApp.Model
         public string Password { get; set; }
         [Required]
         public string Name { get; set; }
-    }
+    }*/
 }

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using GraphQlAPI.Model;
 
-namespace GraphQlAPI.Data
+namespace GraphQlAPI.Data.Interface
 {
     public interface IAccount
     {
